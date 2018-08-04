@@ -22,7 +22,13 @@ fib_dict = {
 # Define this recursive function to return the expected output
 # Do not print it from this function
 def fib_sequence(num):
-	# to be completed
-	return fib_dict[num]
+    if num in fib_dict:
+        return fib_dict[num]
+	
+    prev = fib_sequence(num-1)
+    second_last = fib_sequence(num-2)
+	
+    fib_dict[num] = prev + second_last
+    return fib_dict[num]
 
 #write code to accept user input, call the function and print the result
