@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<div>
+	<!-- This form is incomplete. It will not send the request properly and has missing components.  Add the necessary fields to complete the form.  -->
+	<form method = 'POST'>
+	     <div style="margin: 10px 0px">
+			<label>Amount Invested ($): </label><br/>
+			<input name="amount invested" placeholder="Amount Invested" />
+		</div>
+		<div style="margin: 10px 0px">
+			<label>Interest Rate (%): </label><br/>
+			<input name="interest rate" placeholder="Amount Invested" />
+		</div>
+		<div style="margin: 10px 0px">
+			<label>Time Invested (Years): </label><br/>
+			<input name="time_interest" placeholder="Amount Invested" value = "{%if time_interest %} {{time_interest}} {% endif %}" {%if not calc_total %}disabled{% endif %}/>
+		</div>
+		<div style="margin: 10px 0px">
+			<label>Total Interest ($): </label><br/>
+			<input name="calc total" placeholder="Amount Invested " value = "{%if total %} {{total}} {% endif %}" {%if calc_total %}disabled{% endif %}/>
+		</div>
+		
+		
+		<div style="margin: 10px 0px">
+			<button type="submit">Submit</button>
+		</div>
+		
+		
+		<a href="{{url_for('time_interest')}}"> Time Form </a>
+		<a href="{{url_for('interest_total')}}"> Total Form </a>
+	</form>
+</div>
+<div>
+	
+	{{message}}
+</div>
+<a href="{{url_for('credits')}}">Credits Page</a>
+{% endblock %}
